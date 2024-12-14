@@ -80,7 +80,7 @@ public:
 
 	// Default Constructor.
 	// Default Parameters: month = 1; day = 1; year = 1930
-	Date() : month(1), day(1), year(1930) { setMonths; }
+	Date() : month(1), day(1), year(1930) { setMonths(); }
 
 	// Overloaded Constructor.
 	// Postcondition:	month = mm; day = dd; year = yyyy;
