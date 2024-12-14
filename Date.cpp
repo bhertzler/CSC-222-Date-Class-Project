@@ -26,31 +26,31 @@ void Date::setDate(int mm, int dd, int yyyy)
 			year = yyyy;
 		else
 		{
-			throw range_error("Year Value Out of Range, defaulting to 1930.");
-			year = 1930;
+			throw range_error("Year Value Out of Range");
 		}
 
-		setMonths;
+		setMonths();
 
-		if (mm > 0 && mm < 12)
+		if (mm > 0 && mm < 13)
 			month = mm;
 		else
 		{
-			throw range_error("Month Value Out of Range, defaulting to 1.");
-			month = 1;
+			throw range_error("Month Value Out of Range");
 		}
 
 		if (dd > 0 && dd <= monthLength(month))
 			day = dd;
 		else
 		{
-			throw range_error("Day Value Out of Range, defaulting to 1.");
-			day = 1;
+			throw range_error("Day Value Out of Range");
 		}
 	}
 	catch (exception err)
 	{
-		cerr << "ERROR: " << err.what() << endl;
+		cerr << "ERROR: " << err.what() << ", resetting to default value." << endl;
+		year = 1930;
+		month = 1;
+		day = 1;
 	}
 }
 
@@ -88,6 +88,7 @@ void Date::print(int format)
 		break;
 	case 3:
 		cout << setprecision(2) << day << ' ' << monthName(month) << ' ' << setprecision(4) << year << endl;
+		break;
 	default:
 		cerr << "INVALID OUTPUT FORMAT" << endl;
 		break;
@@ -167,7 +168,7 @@ Date Date::operator--()
 {
 	if (day == 1)
 	{
-		if (month = 1)
+		if (month == 1)
 		{
 			month = 12;
 			year--;
@@ -189,7 +190,7 @@ Date Date::operator--(int)
 
 	if (day == 1)
 	{
-		if (month = 1)
+		if (month == 1)
 		{
 			month = 12;
 			year--;

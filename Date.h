@@ -80,7 +80,7 @@ public:
 
 	// Default Constructor.
 	// Default Parameters: month = 1; day = 1; year = 1930
-	Date() : month(1), day(1), year(1930) { setMonths; }
+	Date() : month(1), day(1), year(1930) { setMonths(); }
 
 	// Overloaded Constructor.
 	// Postcondition:	month = mm; day = dd; year = yyyy;
@@ -93,7 +93,7 @@ private:
 	int month;													// Variable to store the month
 	int day;													// Variable to store the day
 	int year;													// Variable to store the year
-	struct monthType { string name; int length; };				// Struct to store month attributes
+	struct monthType { string name = ""; int length = 0; };		// Struct to store month attributes
 	monthType months[12];										// Array to store the months
 	void setMonths();											// Private function to manage month attributes
 	int julian() const;											// Private function to return the Julian Day Number
